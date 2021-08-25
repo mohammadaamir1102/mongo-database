@@ -25,25 +25,25 @@ db.collectionName.insertOne({
 })
 
 -> insert multiple data
-
-db.collectionName.insertMany([
+Note-> here record is a collection
+db.record.insertMany([
     {
-    name: 'Aamir khan',
+    name: 'Arbaz khan',
     age: 22,
     address: 'Mumbai',
     phoneNumber:8726881557
     },
      {
-    name: 'Aasim khan',
+    name: 'Abrar khan',
     age: 18,
-    address: 'Basti',
-    phoneNumber:7081422800
+    address: 'Khalilabad',
+    phoneNumber:7081424300
     },
      {
-    name: 'Aaquib khan',
+    name: 'Faizan khan',
     age: 13,
     address: 'Basti',
-    phoneNumber:6754356785
+    phoneNumber:6754356754
     }
     
     ])
@@ -63,6 +63,23 @@ db.collectionName.insertMany([
 
     db.collectionName.deleteOne({_id: ObjectId("61251ca0ad60462b663d8811")})
 
-    -> deleteMany
+   -> deleteMany
 
     db.collectionName.deleteMany({_id:{$in:[ ObjectId("61251d45ad60462b663d8814"), ObjectId("61251d45ad60462b663d8813")]}})
+
+   -> join in mongo db
+
+    create another table and inject some values like:
+    
+    db.review.insertMany([{text:'this is good person, star 5'},{text:'this is good person, star 5'}])
+   
+    then inject the first collection id inside the review collection for making foreign key like:
+
+    here recordId is the primary key of record collection but i put that id inside the review collection for making foreign key (for linking table)
+
+    db.review.insertMany([{text:'this is good person, star 5',recordId: ObjectId("61251d45ad60462b663d8812")},{text:'this is good person, star 5',recordId:ObjectId("6125d840da24f6d08f9c9a38")}])
+
+    ->another ways
+    here review is another table i put here all data of review collection 
+     db.record.update({_id: ObjectId("61251d45ad60462b663d8812")},{$set:{reviews:[{text:'this is good guys',star:4},{text:'this is bad guys',star:2}]}})
+
