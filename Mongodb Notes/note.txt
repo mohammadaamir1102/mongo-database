@@ -1,0 +1,68 @@
+we can see data by => show dbs
+create data base by => use <databaseName>
+create collection => db.createCollection('collectionName')
+see collection => show collections
+delete collection => db.collectionName.drop() 
+database Delete => db.dropDatabase()
+
+Note => first check database in which database you are in then run this commands => db.dropDatabase();
+
+show data inside the collection=> db.collectionName.find();
+if we want in pretty form => db.collectionName.find().pretty();
+
+inset data by two ways
+1= db.collectionName.insertOne({}) <also can write insert()> for one data
+2= db.collectionName.insertMany({}) for multiple data
+
+
+-> insert one data only
+
+db.collectionName.insertOne({
+    name: 'Aamir khan',
+    age: 22,
+    address: 'Mumbai',
+    phoneNumber:8726881557
+})
+
+-> insert multiple data
+
+db.collectionName.insertMany([
+    {
+    name: 'Aamir khan',
+    age: 22,
+    address: 'Mumbai',
+    phoneNumber:8726881557
+    },
+     {
+    name: 'Aasim khan',
+    age: 18,
+    address: 'Basti',
+    phoneNumber:7081422800
+    },
+     {
+    name: 'Aaquib khan',
+    age: 13,
+    address: 'Basti',
+    phoneNumber:6754356785
+    }
+    
+    ])
+
+    -> get record name is Aamir
+
+    db.collectionName.find({name:'Aamir khan'})
+
+    -> update data based on Id
+
+   db.collectionName.update({_id: ObjectId("61251ca0ad60462b663d8811")},
+   {$set: {name:'Arbaz khan'}})
+
+   -> delete data
+   1-> deleteOne();
+   2-> deleteMany();
+
+    db.collectionName.deleteOne({_id: ObjectId("61251ca0ad60462b663d8811")})
+
+    -> deleteMany
+
+    db.collectionName.deleteMany({_id:{$in:[ ObjectId("61251d45ad60462b663d8814"), ObjectId("61251d45ad60462b663d8813")]}})
