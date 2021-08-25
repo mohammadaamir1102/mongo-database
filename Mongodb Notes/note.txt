@@ -79,7 +79,7 @@ db.record.insertMany([
 
     db.review.insertMany([{text:'this is good person, star 5',recordId: ObjectId("61251d45ad60462b663d8812")},{text:'this is good person, star 5',recordId:ObjectId("6125d840da24f6d08f9c9a38")}])
 
-    ->another ways
+    ->This is the best ways
     here review is another table i put here all data of review collection 
      db.record.update({_id: ObjectId("61251d45ad60462b663d8812")},{$set:{reviews:[{text:'this is good guys',star:4},{text:'this is bad guys',star:2}]}})
 
